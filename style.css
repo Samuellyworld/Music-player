@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+:root {
+  --primary-color: #242323; /*lll*/
+  --primary-variant: #ff2d2d;
+  --secondary-color:  #e7e7e7;  /* qqqq*/
+  --on-primary: #fff;   /* ff*/
+  --on-button: rgb(129, 129, 129);  /*hhh*/
+  --on-toggle-text: #242323;  /*kk*/
+  --background: #c9ced3;        /* qqq*/
+  --h:  #242323;
+}
+
+[data-theme="dark"] {
+ 
+ --on-toggle-text: #fff;
+  --secondary-color:  rgba(66, 66, 66, 0.7);
+  --on-primary:  #242323;
+   --primary-color: #fff;
+  --on-button: #fff;
+  --on-background-alt: rgba(255, 255, 255, 0.7);
+  --background: #121212;
+  --h: #fff;
+}
+
+
+
+
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:  var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Spartan", sans-serif;
+  font-size: 12px;
+}
+ 
+.player-container {
+  height: 500px;
+  width: 400px;
+  background: var(--secondary-color);
+  border-radius: 20px;
+  box-shadow: 0 15px 30px 5px rgba(0,0,0,0.3);
+}
+
+.img-container {
+  height: 300px;
+  width: 300px;
+  position: relative;
+  top: -50px;
+  left: 50px;
+}
+
+.img-container img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 5px 30px 5px rgba(0,0,0,0.5);
+
+}
+
+h2 {
+  color: var(--h);
+  font-size: 25px;
+  text-align: center;
+  margin: 0;
+}
+
+h3 {
+  color: var(--h);
+  font-size: 20px;
+  text-align: center;
+  font-weight: 400;
+  margin: 5px 0 0;
+}
+
+/* Progress */
+.progress-container {
+  background: var(--on-primary);
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 40px 20px;
+  height: 4px;
+  width: 90%;
+}
+
+.progress {
+  background: var(--primary-color);
+  border-radius: 5px;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.duration-wrapper {
+  position: relative;
+  top: -25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Controls */
+.player-controls {
+  position: relative;
+  top: -15px;
+  left: 120px;
+  width: 200px;
+}
+
+ .fas {
+  font-size: 30px;
+  color: var(--on-button);
+  cursor: pointer;
+  user-select: none;
+  margin-right: 30px;
+
+}
+.player-controls .fas:hover {
+  filter: brightness(80%);
+}
+
+
+
+.main-button {
+  font-size: 40px;
+  position: relative;
+  top: 3px;
+}
+
+/*toggle dark*/
+.theme-switch-wrapper {
+  display: flex;
+  text-align: center;
+  z-index: 100;
+  position: fixed;
+  right: 25px;
+  top: 30px;
+}
+
+.theme-switch-wrapper span {
+  margin-right: 10px;
+  font-size: 1rem;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.toggle-text {
+  position: relative;
+  top: -5px;
+  right: 5px;
+  color: var(--on-toggle-text);
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background: var(--secondary-color);
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  background: var(--primary-color);
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background: var(--on-primary);
+}
+
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+}
+
+.ink {
+/*  font-size: 30px;
+  margin-right: 5px;*/
+  color:  rgb(206, 187, 64);
+}
+
+/* Media Query: iPhone (Vertical) */
+@media screen and (max-width: 480px) {
+.player-container {
+  width: 95%;
+}
+
+  .img-container {
+    left: 29px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 15px;
+  }
+
+  .player-controls {
+    top: -10px;
+    left: 100px;
+  }
+/*  .toggle-text {
+    top: -18px;
+  }*/
+  .theme-switch-wrapper span {
+    margin-right: -2px;
+    margin-top: -19px;
+    font-size: 13px;
+}
+ /* .ink {
+    font-size: 20px;
+  }*/
+  .slider{
+    bottom: 24px;
+    left: 16px;
+    right: -15px;
+    top: -22px;
+  }
+/*.toggle-icon .fas {
+  font-size: 23px;
+  margin-top: -14px;
+}*/
+}
